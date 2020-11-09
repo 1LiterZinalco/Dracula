@@ -36,7 +36,17 @@ class MessageHandler(commands.Cog):
         elif(message.content.startswith(".")):
             utils.log("COMMAND", "{} ({}) @ {} ({}) 💬 {}".format(author, author.id, channel_name, channel_id, message.content))
         else:
-            pass
+            for word in config.BAD_WORDS:
+                if word in message.content:
+                    await message.channel.send("{} language!".format(message.author.mention))
+                    try:
+                        await message.delete()
+                    except:
+                        pass
+            for word in config.CRACKED_TRIGGER:
+                if word in message.content:
+                    pass # TODO: send improved embed
+               
 
 #============================================================================================================#
 
