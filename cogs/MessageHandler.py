@@ -41,6 +41,7 @@ class MessageHandler(commands.Cog):
                     await message.channel.send("{} language!".format(message.author.mention))
                     try:
                         await message.delete()
+                        # TODO: send msg to admin channel
                     except:
                         pass
             for word in config.CRACKED_TRIGGER:
